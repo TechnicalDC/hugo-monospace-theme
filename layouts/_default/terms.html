@@ -1,0 +1,13 @@
+{{ define "title" -}}
+{{ .Title | title }}
+<hr/>
+{{- end }}
+{{ define "main" -}}
+{{ .Content }}
+<ul class="list">
+  {{ range .Data.Terms.ByCount }}
+  <li class="list-item">{{ .Count }} - <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></li>
+  {{ end }}
+</ul>
+{{- partial "footer.html" . -}}
+{{- end }}

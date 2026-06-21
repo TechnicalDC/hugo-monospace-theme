@@ -1,0 +1,11 @@
+{{ define "title" -}}
+{{ .Title | title }}
+<hr/>
+{{- end }}
+{{ define "main" }}
+<h2>Table Of Contents</h2>
+{{ .TableOfContents }}
+{{ .Content }}
+{{- partial "nextprev.html" . -}}
+{{- partial "footer.html" . -}}
+{{ end }}

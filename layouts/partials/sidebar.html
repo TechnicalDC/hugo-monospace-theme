@@ -1,0 +1,9 @@
+<div class="profile-container">
+	<div class="profile">
+		<img class="profileimage"
+		src="{{ .Site.Params.profilePicture | relURL }}"
+		alt="profile picture" />
+		<h1 class="profile-author">{{ .Site.Params.author | title }}</h1>
+		<p class="profile-description">{{ replace .Site.Params.description "\n" "<br />" | safeHTML }}</p>
+	</div>
+</div>

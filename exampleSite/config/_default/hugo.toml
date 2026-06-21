@@ -1,0 +1,9 @@
+baseURL = 'https://example.org'
+locale = 'en-us'
+title = 'Hugo Monospace'
+theme = "monospace"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"

@@ -1,0 +1,17 @@
+{{ define "title" -}}
+{{ .Site.Params.title }}
+<hr/>
+{{- end }}
+{{ define "main" }}
+<p>{{ .Content }}</p>
+<div class="posts-list">
+	<h2>Recent Posts</h2>
+	<ul class="list">
+		{{ with .Site.GetPage "/posts" }}
+		{{ range first 5 (sort .Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+		<li class="list-item"> {{ .Date | time.Format ":date_medium" }} - <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a> </li>
+		{{ end }}
+		{{ end }}
+	</ul>
+	{{- partial "footer.html" . -}}
+{{ end }}

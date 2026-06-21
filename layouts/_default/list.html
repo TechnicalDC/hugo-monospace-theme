@@ -1,0 +1,13 @@
+{{ define "title" -}}
+{{ .Title | title }}
+<hr/>
+{{- end }}
+{{ define "main" -}}
+{{ .Content }}
+<ul class="list">
+	{{- range.Pages }}
+	<li class="list-item"> {{ .Date | time.Format ":date_medium" }} - <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a> </li>
+	{{- end }}
+</ul>
+{{- partial "footer.html" . -}}
+{{- end }}
