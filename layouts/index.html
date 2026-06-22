@@ -6,12 +6,17 @@
 <p>{{ .Content }}</p>
 <div class="posts-list">
 	<h2>Recent Posts</h2>
-	<ul class="list">
-		{{ with .Site.GetPage "/posts" }}
-		{{ range first 5 (sort .Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
-		<li class="list-item"> {{ .Date | time.Format ":date_medium" }} - <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a> </li>
-		{{ end }}
-		{{ end }}
-	</ul>
+	<table class="time-list">
+		<tbody>
+			{{ with .Site.GetPage "/posts" }}
+			{{ range first 5 (sort .Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+			<tr>
+				<td>{{- partial "date" .Date -}}</td>
+				<td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+			</tr>
+			{{ end }}
+			{{ end }}
+		</tbody>
+	</table>
 	{{- partial "footer.html" . -}}
 {{ end }}

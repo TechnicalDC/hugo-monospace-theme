@@ -4,10 +4,15 @@
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
-<ul class="list">
-  {{ range .Data.Terms.ByCount }}
-  <li class="list-item">{{ .Count }} - <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></li>
-  {{ end }}
-</ul>
+<table class="time-list">
+	<tbody>
+		{{ range .Data.Terms.ByCount }}
+		<tr>
+			<td>{{ .Count }}</td>
+			<td><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></td>
+		</tr>
+		{{ end }}
+	</tbody>
+</table>
 {{- partial "footer.html" . -}}
 {{- end }}

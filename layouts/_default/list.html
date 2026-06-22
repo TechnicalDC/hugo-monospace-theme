@@ -4,10 +4,15 @@
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
-<ul class="list">
-	{{ range sort .Pages "Date" "desc" }}
-	<li class="list-item"> {{ .Date | time.Format ":date_medium" }} - <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a> </li>
-	{{- end }}
-</ul>
+<table class="time-list">
+	<tbody>
+		{{ range sort .Pages "Date" "desc" }}
+		<tr>
+			<td>{{- partial "date" .Date -}}</td>
+			<td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+		</tr>
+		{{ end }}
+	</tbody>
+</table>
 {{- partial "footer.html" . -}}
 {{- end }}
