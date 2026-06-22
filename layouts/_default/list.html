@@ -5,7 +5,7 @@
 {{ define "main" -}}
 {{ .Content }}
 <ul class="list">
-	{{- range.Pages }}
+	{{ range sort .Pages "Date" "desc" }}
 	<li class="list-item"> {{ .Date | time.Format ":date_medium" }} - <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a> </li>
 	{{- end }}
 </ul>
