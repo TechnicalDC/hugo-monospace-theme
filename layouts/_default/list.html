@@ -1,18 +1,39 @@
 {{ define "title" -}}
 {{ .Title | title }}
-<hr/>
+<hr class="wrapper-line"/>
 {{- end }}
 {{ define "main" -}}
 {{ .Content }}
 <table class="time-list">
 	<tbody>
-		{{ range sort .Pages "Date" "desc" }}
+		{{ $pages := where site.RegularPages "Type" "posts" }}
+		{{ $paginator := .Paginate $pages }}
+		{{ range sort $paginator.Pages "Date" "desc" }}
 		<tr>
 			<td>{{- partial "date" .Date -}}</td>
 			<td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
 		</tr>
 		{{ end }}
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
 	</tbody>
 </table>
+<!-- Main Nav -->
+{{- if gt $paginator.TotalPages 1 -}}
+<div id="nextprev" class="nextprev">
+	<div>
+		{{- if $paginator.HasPrev -}}
+		<b><a href="{{- $paginator.Prev.URL -}}" class="prev">< Previous</a></b>
+		{{ end -}}
+	</div>
+	<div>
+		{{- if $paginator.HasNext -}}
+		<b ><a href="{{- $paginator.Next.URL -}}" class="next">Next ></a></b>
+		{{ end -}}
+	</div>
+</div>
+{{- end -}}<!---->
 {{- partial "footer.html" . -}}
 {{- end }}
