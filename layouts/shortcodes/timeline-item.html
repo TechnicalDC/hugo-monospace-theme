@@ -1,20 +1,19 @@
 {{ $title := .Get "title" }}
 {{ $subtitle := .Get "subtitle" }}
 {{ $date := .Get "date" }}
-<tr>
-	<td>{{ $date }}</td>
-	<td>
-		{{ if $title }}
-		<b>{{ $title }}</b>
-		{{ end }}
-		<hr class="wrapper-line"/>
-		{{ if $subtitle }}
-		<i>{{ $subtitle }}</i>
-		{{ end }}
-		{{- .Inner | markdownify -}}
-	</td>
-</tr>
-<tr>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
-</tr>
+<li class="timeline-item">
+	<div class="nextprev">
+	{{ if $title }}
+	<b>{{ $title }}</b>
+	{{ end }}
+	{{ if $date }}
+	<b>[{{ $date }}]</b>
+	{{ end }}
+	</div>
+	<hr class="wrapper-line"/>
+	{{ if $subtitle }}
+	<i>{{ $subtitle }}</i>
+	{{ end }}
+	{{- .Inner | markdownify -}}
+</li>
+<br/>
