@@ -33,7 +33,7 @@ ul {
 
 a { 
 	color: black; 
-	text-decoration: none;
+	/* text-decoration: none; */
 }
 a:hover {
 	background-color: black;
@@ -132,6 +132,7 @@ footer { margin-top: 50px; }
 	margin: 0px;
 	display: block;
 	text-align: center;
+	text-decoration: none;
 	border: 1px solid white;
 }
 .menu .menu-item a:hover {
@@ -158,6 +159,8 @@ footer { margin-top: 50px; }
 	width: 100%;
 	border: 0px
 }
+#TableOfContents a,
+.time-list a { text-decoration: none; }
 .time-list td { border:0px; }
 .time-list tr {
 	background-color: white; 
